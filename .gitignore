@@ -18,7 +18,6 @@ env/
 Thumbs.db
 
 # Large raw datasets
-data/raw/*.csv
 
 # Local Power BI cache/generated files
 **/.pbi/

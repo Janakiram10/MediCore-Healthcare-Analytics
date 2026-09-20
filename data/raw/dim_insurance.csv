@@ -1,0 +1,9 @@
+insurance_id,insurance_provider,plan_type,coverage_percentage,claim_processing_days,insurance_status
+INS001,HealthSecure,Basic,0.6,15,Active
+INS002,MediAssist,Standard,0.75,12,Active
+INS003,CarePlus,Premium,0.9,10,Active
+INS004,National Health Shield,Government,0.95,20,Active
+INS005,PrimeCare,Corporate,0.85,14,Active
+INS006,WellLife,Standard,0.75,18,Active
+INS007,CorporateCare,Corporate,0.85,10,Active
+INS008,Government Health Plan,Government,0.95,25,Active

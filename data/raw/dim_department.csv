@@ -1,0 +1,45 @@
+department_id,department_name,department_category,hospital_id,capacity_per_day
+D001,Obstetrics,Medical,H001,77
+D002,ENT,Medical,H001,126
+D003,Emergency,Emergency,H001,69
+D004,Oncology,Medical,H001,133
+D005,Radiology,Diagnostic,H001,154
+D006,Orthopedics,Surgical,H001,64
+D007,Cardiology,Medical,H002,53
+D008,General Medicine,Medical,H002,63
+D009,Dermatology,Medical,H002,68
+D010,Orthopedics,Surgical,H002,74
+D011,Oncology,Medical,H002,95
+D012,General Surgery,Surgical,H002,57
+D013,Radiology,Diagnostic,H003,96
+D014,Obstetrics,Medical,H003,73
+D015,Cardiology,Medical,H003,63
+D016,General Medicine,Medical,H003,40
+D017,Emergency,Emergency,H003,53
+D018,General Surgery,Surgical,H004,92
+D019,Oncology,Medical,H004,94
+D020,Pediatrics,Medical,H004,66
+D021,ENT,Medical,H004,127
+D022,Cardiology,Medical,H004,112
+D023,Neurology,Medical,H004,125
+D024,Obstetrics,Medical,H005,85
+D025,General Surgery,Surgical,H005,79
+D026,Emergency,Emergency,H005,101
+D027,Orthopedics,Surgical,H005,67
+D028,Cardiology,Medical,H005,123
+D029,ENT,Medical,H005,62
+D030,Pediatrics,Medical,H005,138
+D031,Neurology,Medical,H006,73
+D032,Cardiology,Medical,H006,56
+D033,Pediatrics,Medical,H006,110
+D034,Radiology,Diagnostic,H006,92
+D035,ENT,Medical,H006,71
+D036,Dermatology,Medical,H006,52
+D037,Cardiology,Medical,H007,49
+D038,Neurology,Medical,H007,51
+D039,General Surgery,Surgical,H007,44
+D040,Oncology,Medical,H007,51
+D041,Obstetrics,Medical,H008,49
+D042,Pediatrics,Medical,H008,58
+D043,Cardiology,Medical,H008,76
+D044,Radiology,Diagnostic,H008,48

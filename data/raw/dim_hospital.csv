@@ -1,0 +1,9 @@
+hospital_id,hospital_name,city,state,hospital_type,bed_capacity,opening_year
+H001,MediCore Central Hospital,Hyderabad,Telangana,Teaching,800,2005
+H002,MediCore North Hospital,Hyderabad,Telangana,General,550,2010
+H003,MediCore East Hospital,Visakhapatnam,Andhra Pradesh,General,500,2008
+H004,MediCore South Hospital,Bengaluru,Karnataka,Specialty,650,2012
+H005,MediCore West Hospital,Pune,Maharashtra,Teaching,700,2001
+H006,MediCore Metro Hospital,Chennai,Tamil Nadu,General,600,2007
+H007,MediCore Community Hospital,Vijayawada,Andhra Pradesh,Community,300,2016
+H008,MediCore Lakeside Hospital,Kochi,Kerala,Specialty,450,2014

@@ -1,0 +1,13 @@
+diagnosis_id,diagnosis_code,diagnosis_name,diagnosis_category
+DG001,I10,Hypertension,Cardiovascular
+DG002,E11,Type 2 Diabetes,Metabolic
+DG003,J06,Acute Respiratory Infection,Respiratory
+DG004,M54,Back Pain,Musculoskeletal
+DG005,K21,GERD,Gastrointestinal
+DG006,I25,Ischemic Heart Disease,Cardiovascular
+DG007,G43,Migraine,Neurological
+DG008,S72,Fracture,Injury
+DG009,C50,Breast Cancer,Oncology
+DG010,C34,Lung Cancer,Oncology
+DG011,L20,Dermatitis,Dermatological
+DG012,N39,Urinary Infection,Genitourinary
