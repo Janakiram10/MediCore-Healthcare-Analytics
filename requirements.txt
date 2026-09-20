@@ -7,4 +7,5 @@ scikit-learn
 jupyter
 gunicorn>=23,<24 
 plotly 
-dash 
+dash
+psycopg2-binary>=2.9,<3
