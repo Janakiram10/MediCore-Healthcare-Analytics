@@ -1,23 +1,12 @@
-# MediCore Dash Dashboard
+# MediCore Interactive Dashboard
 
-This is the primary interactive dashboard for the MediCore Healthcare Analytics portfolio project.
+This folder contains the deployable Plotly Dash application for the MediCore Healthcare Analytics portfolio project.
 
-## Run
+## Live dashboard
 
-From the project root:
+https://web-production-d29b6.up.railway.app/
 
-```bash
-pip install -r dashboard/requirements.txt
-python dashboard/app.py
-```
-
-Then open `http://127.0.0.1:8050`.
-
-## Design
-
-One Python file (`dashboard/app.py`) contains the complete dashboard, navigation, filters, KPI cards, charts, and tables.
-
-Sections:
+## Management views
 
 1. Executive Overview
 2. Hospital Performance
@@ -26,4 +15,39 @@ Sections:
 5. Readmission & Risk
 6. Revenue & Collections
 
-The dashboard reads the validated CSV files in `data/raw` and does not modify them.
+## Global filters
+
+The application supports:
+
+- Hospital
+- Department
+- Year
+- Encounter type
+
+The dashboard reads validated synthetic CSV files from `data/raw` and does not modify the source data.
+
+## Run locally
+
+From the project root:
+
+```bash
+pip install -r requirements.txt
+python dashboard/app.py
+```
+
+Open:
+
+```text
+http://127.0.0.1:8050
+```
+
+## Application design
+
+`dashboard/app.py` contains the page navigation, filter logic, KPI calculations, charts, and tables.
+
+The web dashboard exists alongside Power BI for a specific portfolio reason:
+
+- **Power BI** demonstrates enterprise reporting and semantic/report-layer skills.
+- **Plotly Dash** makes the analytical work directly accessible through a deployed web application.
+
+This avoids duplicating the same responsibility across tools while allowing reviewers to inspect the project without requiring Power BI Desktop.
