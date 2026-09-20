@@ -1,0 +1,51 @@
+name: Validate portfolio aggregates
+
+on:
+  push:
+    paths:
+      - ".github/workflows/validate-portfolio-aggregates.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate billing aggregates
+        shell: python
+        run: |
+          import csv
+          from collections import defaultdict
+
+          agg = defaultdict(lambda: {"billed": 0.0, "collected": 0.0, "outstanding": 0.0, "bills": 0})
+
+          with open("data/raw/fact_billing.csv", newline="", encoding="utf-8") as f:
+              reader = csv.DictReader(f)
+              for row in reader:
+                  h = row["hospital_id"]
+                  agg[h]["billed"] += float(row["billed_amount"])
+                  agg[h]["collected"] += float(row["insurance_paid"]) + float(row["patient_paid"])
+                  agg[h]["outstanding"] += float(row["outstanding_amount"])
+                  agg[h]["bills"] += 1
+
+          print("BILLING_AGGREGATES_BEGIN")
+          for h in sorted(agg):
+              x = agg[h]
+              print(
+                  f"{h}|bills={x['bills']}|"
+                  f"billed={x['billed']:.2f}|"
+                  f"collected={x['collected']:.2f}|"
+                  f"outstanding={x['outstanding']:.2f}"
+              )
+
+          print(
+              "TOTAL|"
+              f"billed={sum(x['billed'] for x in agg.values()):.2f}|"
+              f"collected={sum(x['collected'] for x in agg.values()):.2f}|"
+              f"outstanding={sum(x['outstanding'] for x in agg.values()):.2f}"
+          )
+          print("BILLING_AGGREGATES_END")
