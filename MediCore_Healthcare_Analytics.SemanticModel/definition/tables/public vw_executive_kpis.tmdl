@@ -1,0 +1,145 @@
+table 'public vw_executive_kpis'
+	lineageTag: 13c33e35-1381-48cf-aa35-e4532b51d456
+
+	column total_appointments
+		dataType: int64
+		formatString: 0
+		lineageTag: daed3a8a-c982-495f-a3c7-43f58ed74941
+		summarizeBy: sum
+		sourceColumn: total_appointments
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_appointments
+		dataType: int64
+		formatString: 0
+		lineageTag: 363ab4c6-57b5-4ff3-9c1c-6a2ffaf971cb
+		summarizeBy: sum
+		sourceColumn: completed_appointments
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_appointments
+		dataType: int64
+		formatString: 0
+		lineageTag: 5371a15c-47bf-4419-aa52-8b74c3b2fad2
+		summarizeBy: sum
+		sourceColumn: no_show_appointments
+
+		annotation SummarizationSetBy = Automatic
+
+	column cancelled_appointments
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c34fb0f-18d1-4c8b-88ee-5c442d1430b6
+		summarizeBy: sum
+		sourceColumn: cancelled_appointments
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_rate_pct
+		formatString: "0.00"
+		dataType: double
+		lineageTag: 0fc74490-6d5c-4a9e-9622-67b3cce3b05e
+		summarizeBy: sum
+		sourceColumn: no_show_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_encounters
+		dataType: int64
+		formatString: 0
+		lineageTag: ad09a9c1-93b7-4ee8-be23-cde226f264ff
+		summarizeBy: sum
+		sourceColumn: total_encounters
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_billed_amount
+		formatString: "₹#,##0.00"
+		dataType: double
+		lineageTag: 98a95e53-8f5f-4a8c-bb32-05f34199891b
+		summarizeBy: sum
+		sourceColumn: total_billed_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_collected_amount
+		formatString: "₹#,##0.00"
+		dataType: double
+		lineageTag: 768d1dc4-bd4a-4405-b182-a919a1072917
+		summarizeBy: sum
+		sourceColumn: total_collected_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_outstanding_amount
+		formatString: "₹#,##0.00"
+		dataType: double
+		lineageTag: 3892371e-2d1a-432f-a030-904f9dd27f55
+		summarizeBy: sum
+		sourceColumn: total_outstanding_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column collection_rate_pct
+		formatString: "0.00"
+		dataType: double
+		lineageTag: ca7aeec9-d0f5-44ed-bff7-d29c827271b5
+		summarizeBy: sum
+		sourceColumn: collection_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_wait_minutes
+		formatString: "0.00"
+		dataType: double
+		lineageTag: 5a49b58c-3f04-40c2-a91f-b83868b3af1f
+		summarizeBy: sum
+		sourceColumn: avg_wait_minutes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_satisfaction_score
+		formatString: "0.00"
+		dataType: double
+		lineageTag: 7548103d-7786-4fd2-90b5-9983b21a313b
+		summarizeBy: sum
+		sourceColumn: avg_satisfaction_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column readmission_rate_pct
+		formatString: "0.00"
+		dataType: double
+		lineageTag: 8fe956d7-af4a-44b3-9ebb-52ae49627ccb
+		summarizeBy: sum
+		sourceColumn: readmission_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'public vw_executive_kpis' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "medicore_healthcare"),
+				    public_vw_executive_kpis = Source{[Schema="public",Item="vw_executive_kpis"]}[Data]
+				in
+				    public_vw_executive_kpis
+

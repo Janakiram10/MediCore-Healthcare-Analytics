@@ -1,0 +1,97 @@
+table 'public vw_revenue_collections'
+	lineageTag: 17142b46-5330-43a9-bb1b-fa03eb4c1063
+
+	column analysis_level
+		dataType: string
+		lineageTag: 5f362c64-5ef9-4e2d-81a8-09f32a07a992
+		summarizeBy: none
+		sourceColumn: analysis_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_id
+		dataType: string
+		lineageTag: e96960c3-76d4-49bb-898f-572e92305e7a
+		summarizeBy: none
+		sourceColumn: category_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_name
+		dataType: string
+		lineageTag: d03600c7-fe91-4d74-a8b3-2d5d4f180b0c
+		summarizeBy: none
+		sourceColumn: category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_bills
+		dataType: int64
+		formatString: 0
+		lineageTag: b053da62-39c5-44ea-b3ad-3ca0eb2d6b04
+		summarizeBy: sum
+		sourceColumn: total_bills
+
+		annotation SummarizationSetBy = Automatic
+
+	column billed_amount
+		dataType: double
+		lineageTag: d41d8faa-1349-4631-aacc-eba084d0504c
+		summarizeBy: sum
+		sourceColumn: billed_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column approved_amount
+		dataType: double
+		lineageTag: 1153e073-f4ff-4159-af35-9904141b9177
+		summarizeBy: sum
+		sourceColumn: approved_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column collected_amount
+		dataType: double
+		lineageTag: 642ada88-31c9-4577-8e01-f7714ad1aea0
+		summarizeBy: sum
+		sourceColumn: collected_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column outstanding_amount
+		dataType: double
+		lineageTag: 686133d1-92b9-4bac-8fd1-662866cf7874
+		summarizeBy: sum
+		sourceColumn: outstanding_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column collection_rate_pct
+		dataType: double
+		lineageTag: 98d9cfc1-cbeb-4cd3-8b57-20ba9b08ebbb
+		summarizeBy: sum
+		sourceColumn: collection_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'public vw_revenue_collections' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "medicore_healthcare"),
+				    public_vw_revenue_collections = Source{[Schema="public",Item="vw_revenue_collections"]}[Data]
+				in
+				    public_vw_revenue_collections
+
+	annotation PBI_ResultType = Table
+

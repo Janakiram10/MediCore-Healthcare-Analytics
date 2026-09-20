@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d644be32357784968de3",
+  "position": {
+    "x": 620,
+    "y": 625,
+    "z": 24,
+    "height": 325,
+    "width": 585
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "public vw_patient_experience"
+                    }
+                  },
+                  "Property": "wait_category"
+                }
+              },
+              "queryRef": "public vw_patient_experience.wait_category",
+              "nativeQueryRef": "wait_category",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "public vw_patient_experience"
+                        }
+                      },
+                      "Property": "avg_satisfaction_score"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(public vw_patient_experience.avg_satisfaction_score)",
+              "nativeQueryRef": "Sum of avg_satisfaction_score"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "public vw_patient_experience"
+                      }
+                    },
+                    "Property": "avg_satisfaction_score"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": false,
+    "vcObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Patient Satisfaction vs Wait Time'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

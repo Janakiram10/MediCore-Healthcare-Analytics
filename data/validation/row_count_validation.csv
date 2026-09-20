@@ -1,0 +1,10 @@
+file,actual_rows,expected_rows,row_count_pass
+dim_date.csv,731,731,True
+dim_hospital.csv,8,8,True
+dim_department.csv,44,44,True
+dim_doctor.csv,600,600,True
+dim_patient.csv,100000,100000,True
+fact_appointments.csv,500000,500000,True
+fact_encounters.csv,300000,300000,True
+fact_billing.csv,300000,300000,True
+fact_patient_feedback.csv,210000,210000,True

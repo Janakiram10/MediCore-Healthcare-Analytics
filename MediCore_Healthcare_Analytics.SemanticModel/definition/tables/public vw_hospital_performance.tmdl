@@ -1,0 +1,162 @@
+table 'public vw_hospital_performance'
+	lineageTag: a96f7679-bbdb-439c-b7b7-3b71ba123f2b
+
+	column hospital_id
+		dataType: string
+		lineageTag: 62e9cc4e-4da5-4cd5-9a7f-ac122038d3cf
+		summarizeBy: none
+		sourceColumn: hospital_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column hospital_name
+		dataType: string
+		lineageTag: f299c6f7-62c0-499f-bed0-7c408d77f9f8
+		summarizeBy: none
+		sourceColumn: hospital_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 60d6e616-4f2a-438c-84a1-cfc2d76e9a29
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column state
+		dataType: string
+		lineageTag: 230d4612-1388-4a3c-859b-732d22d46101
+		summarizeBy: none
+		sourceColumn: state
+
+		annotation SummarizationSetBy = Automatic
+
+	column hospital_type
+		dataType: string
+		lineageTag: 3df1c2bf-a9f5-4ea4-be69-afbd52e4c775
+		summarizeBy: none
+		sourceColumn: hospital_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column bed_capacity
+		dataType: int64
+		formatString: 0
+		lineageTag: a24e7fa5-c433-4684-ac26-0dcad6e767aa
+		summarizeBy: sum
+		sourceColumn: bed_capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_encounters
+		dataType: int64
+		formatString: 0
+		lineageTag: 527eaf42-8693-420d-a188-74023cbe18c4
+		summarizeBy: sum
+		sourceColumn: total_encounters
+
+		annotation SummarizationSetBy = Automatic
+
+	column encounter_share_pct
+		dataType: double
+		lineageTag: 48eacf22-8a5e-4dc9-b157-a4a753ecf21b
+		summarizeBy: sum
+		sourceColumn: encounter_share_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_wait_minutes
+		dataType: double
+		lineageTag: 8c56130a-1f47-483a-b824-5bf8ed4fc4f1
+		summarizeBy: sum
+		sourceColumn: avg_wait_minutes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_consultation_minutes
+		dataType: double
+		lineageTag: 796394c1-94be-4590-b8dd-7a00a9f8c3e0
+		summarizeBy: sum
+		sourceColumn: avg_consultation_minutes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column billed_amount
+		dataType: double
+		lineageTag: 28580749-44e4-4c26-8783-4d09ae12f83e
+		summarizeBy: sum
+		sourceColumn: billed_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column collected_amount
+		dataType: double
+		lineageTag: 8f8cc663-5e54-4d79-bee1-203bd24735bf
+		summarizeBy: sum
+		sourceColumn: collected_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column outstanding_amount
+		dataType: double
+		lineageTag: 46c4efe1-aa88-4bee-a6b2-80479fd436e2
+		summarizeBy: sum
+		sourceColumn: outstanding_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column collection_rate_pct
+		dataType: double
+		lineageTag: 9c7ea55e-21f7-4aba-bf93-187591b3d656
+		summarizeBy: sum
+		sourceColumn: collection_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_satisfaction_score
+		dataType: double
+		lineageTag: 7412fcd9-088c-4194-b900-db41d63e0aac
+		summarizeBy: sum
+		sourceColumn: avg_satisfaction_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column readmission_rate_pct
+		dataType: double
+		lineageTag: c87a656b-08bf-4d89-afac-b202e010c746
+		summarizeBy: sum
+		sourceColumn: readmission_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'public vw_hospital_performance' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "medicore_healthcare"),
+				    public_vw_hospital_performance = Source{[Schema="public",Item="vw_hospital_performance"]}[Data]
+				in
+				    public_vw_hospital_performance
+
+	annotation PBI_ResultType = Table
+

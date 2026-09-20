@@ -1,0 +1,58 @@
+table 'public vw_no_show_analysis'
+	lineageTag: 9d498dfe-7e0e-4a6f-998b-b88600625b84
+
+	column analysis_dimension
+		dataType: string
+		lineageTag: e22e1ad3-c222-456a-a0e0-6e8009ec35ab
+		summarizeBy: none
+		sourceColumn: analysis_dimension
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 47e6c1c9-4f0d-4e96-8bc8-69d9516cbeb2
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column eligible_appointments
+		dataType: int64
+		formatString: 0
+		lineageTag: 94908689-7401-4c40-bbf6-59a316fc8b0f
+		summarizeBy: sum
+		sourceColumn: eligible_appointments
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_count
+		dataType: int64
+		formatString: 0
+		lineageTag: cf634068-c2da-46c4-88dc-05714d673908
+		summarizeBy: sum
+		sourceColumn: no_show_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column no_show_rate_pct
+		dataType: double
+		lineageTag: 583de8a0-4a2c-4776-9476-209a71a90f77
+		summarizeBy: sum
+		sourceColumn: no_show_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'public vw_no_show_analysis' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "medicore_healthcare"),
+				    public_vw_no_show_analysis = Source{[Schema="public",Item="vw_no_show_analysis"]}[Data]
+				in
+				    public_vw_no_show_analysis
+
+	annotation PBI_ResultType = Table
+
