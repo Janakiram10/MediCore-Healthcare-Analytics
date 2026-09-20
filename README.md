@@ -271,3 +271,4 @@ This is intentional: the goal is a credible analytics case study, not an artific
 - [KPI definitions](documentation/kpi_definitions.md)
 - [Power BI dashboard notes](documentation/powerbi_dashboard.md)
 - [Project completion status](PROJECT_STATUS.md)
+- [Interview walkthrough](documentation/interview_guide.md)
