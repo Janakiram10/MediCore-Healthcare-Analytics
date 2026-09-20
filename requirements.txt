@@ -7,3 +7,4 @@ scikit-learn
 jupyter
 gunicorn>=23,<24 
 plotly 
+dash 
